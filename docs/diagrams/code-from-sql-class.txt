@@ -1,0 +1,84 @@
+@startuml
+!theme toy
+title Generate code from SQL
+
+SqlToCodeRequest o-- Controller
+Controller --> ParserService
+GeneratedCodeDto o-- ParserService
+TableRelationshipGraph *-- ParserService
+TableNode *-- TableRelationshipGraph
+ColumnNode *-- TableNode
+ColumnType *-- ColumnNode
+GeneratedCode *-- GeneratedCodeDto
+
+class Controller {
++ GeneratedCodeDto : sqlToCode(SqlToCodeRequest request)
+  }
+
+class SqlToCodeRequest {
+- String : sql
+  }
+
+class ParserService {
++ GeneratedCodeDto : parseSql(SqlToCodeRequest request)
+  }
+
+class TableRelationshipGraph {
+- List<TableNode> : tableNodes
++ {static} TableRelationshipGraph : fromSql(SqlToCodeRequest request)
++ GeneratedCodeDto : generateCode()
+  }
+
+class TableNode {
+- String : tableName
+- List<ColumnNode> : columnNodes
+  }
+
+class ColumnNode {
+- String : columnName
+- ColumnType : columnType
+- bool : isId
+  }
+
+enum ColumnType {
+/'
+BIGINT,
+BIGSERIAL,
+BIT,
+VARBIT,
+BOOL,
+CHAR,
+VARCHAR,
+DATE,
+DOUBLE,
+INTEGER,
+MONEY,
+NUMERIC,
+REAL,
+SMALLINT,
+SMALLSERIAL,
+SERIAL,
+TEXT,
+TIME,
+TIMETZ,
+TIMESTAMP,
+TIMESTAMPTZ,
+UUID
+'/
+VARCHAR,
+INT,
+UUID,
+...
+}
+
+class GeneratedCodeDto {
+- List<GeneratedCode> : code
+  }
+
+class GeneratedCode {
+- String : entity
+- String : repository
+  }
+
+
+@enduml
