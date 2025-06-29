@@ -7,9 +7,6 @@ A lightweight REST API that converts SQL statements into Spring Boot `@Entity` c
 
 > 🏗️ Designed to accelerate backend development by generating JPA entities and repositories directly from your database schema.
 
-
----
-
 ## 🚀 Features
 
 - 🏛️ Parses SQL `CREATE TABLE` and `ALTER TABLE` statements
@@ -24,13 +21,9 @@ A lightweight REST API that converts SQL statements into Spring Boot `@Entity` c
   - Repository interfaces (`JpaRepository`)
 - 📦 Returns generated code as JSON response
 
----
-
 ## 🗺️ Project Architecture
 UML diagrams and detailed design documentation are available in the /docs folder.
 - [Documentation](./docs)
-
----
 
 ## 📡 API Endpoint
 
@@ -60,8 +53,6 @@ UML diagrams and detailed design documentation are available in the /docs folder
 ]
 ```
 
----
-
 ## 🛠️ Installation & Usage
 
 ### 🔥 Run with Jar
@@ -70,16 +61,12 @@ UML diagrams and detailed design documentation are available in the /docs folder
 ### 🐳 Run with Docker
 [work in progress]
 
----
-
 ## 🌐 Access the API
 Once running, the API will be available at:
 
 ```bash
 http://localhost:8080/sql-to-code
 ```
-
----
 
 ## 🚀 Development Setup
 
@@ -103,15 +90,12 @@ cd aces-springboot-code-gen
 ```bash
 http://localhost:8080/swagger-ui/index.html
 ```
----
 
 ## 📦 Tech Stack
 - Java 24
 - Spring Boot
 - Maven
 - Docker
-
----
 
 ## 🔭 Roadmap
 Future features planned:
@@ -122,17 +106,11 @@ Future features planned:
 - ♻️ Accept a tree snapshot, modify it with additional SQL, and regenerate code
 - 🕵️ Return a detailed explanation of how each SQL statement was parsed
 
----
-
 ## 🤝 Contributing
 Contributions are welcome! Please open an issue or pull request.
 
----
-
 ## 📜 License
 This project is licensed under the [MIT License](LICENSE).
-
----
 
 ## ✨ Acknowledgments
 - Built with ❤️ by Ace
