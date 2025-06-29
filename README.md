@@ -28,7 +28,7 @@ A lightweight REST API that converts SQL statements into Spring Boot `@Entity` c
 
 ## 🗺️ Project Architecture
 UML diagrams and detailed design documentation are available in the /docs folder.
-- [work in progress]
+- [Documentation](./docs)
 
 ---
 
