@@ -9,13 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorsDto> handleValidationException(MethodArgumentNotValidException ex) {
-        var errors = new ErrorsDto();
-        ex.getBindingResult().getFieldErrors().forEach(e -> errors.addError(e.getField(), e.getDefaultMessage()));
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
-    }
-
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorDto> handleMessageNotReadableException(HttpMessageNotReadableException ex) {
         var message = "Bad request";
@@ -27,6 +20,18 @@ public class GlobalExceptionHandler {
             System.out.println(ex.toString());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorDto(message));
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorsDto> handleValidationException(MethodArgumentNotValidException ex) {
+        var errors = new ErrorsDto();
+        ex.getBindingResult().getFieldErrors().forEach(e -> errors.addError(e.getField(), e.getDefaultMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorDto> handleBadRequestExceptions(Exception ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorDto(ex.getMessage()));
     }
 
     @ExceptionHandler(Exception.class)
