@@ -3,6 +3,7 @@ package com.upsxace.aces_springboot_code_gen.config;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,6 +26,7 @@ public class SecurityConfig {
                 c.requestMatchers("/swagger-ui/**").permitAll()
                  .requestMatchers("/swagger-ui.html").permitAll()
                  .requestMatchers("/v3/api-docs/**").permitAll()
+                 .requestMatchers(HttpMethod.POST, "/sql-to-code").permitAll()
                  .anyRequest().authenticated();
             })
             .exceptionHandling(c -> {
