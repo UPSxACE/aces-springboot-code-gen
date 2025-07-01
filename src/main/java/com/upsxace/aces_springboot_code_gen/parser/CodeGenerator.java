@@ -14,7 +14,7 @@ public class CodeGenerator {
         graph.getTableNodes().forEach(t -> {
             var entity = new StringBuilder();
             var entityName = StringUtils.toPascalCase(t.getTableName());
-            var entityIdType = "Long"; // FIXME: accurately detect primary key type
+            var entityIdType = "Long";
 
             entity.append(
                     String.format(
@@ -31,6 +31,7 @@ public class CodeGenerator {
             var i = 0;
             for(ColumnNode c : t.getColumnNodes()){
                 if(i == 0) {
+                    // assume first column is the ID column // FIXME: accurately detect primary key type
                     entityIdType = c.getColumnType().evaluateToCode();
                     entity.append(
                             String.format("""
