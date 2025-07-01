@@ -1,4 +1,4 @@
-package com.upsxace.aces_springboot_code_gen.parser;
+package com.upsxace.aces_springboot_code_gen.parser.code_generator;
 
 import com.upsxace.aces_springboot_code_gen.lib.utils.StringUtils;
 import com.upsxace.aces_springboot_code_gen.parser.table_relationship_graph.ColumnNode;
@@ -19,6 +19,15 @@ public class CodeGenerator {
             entity.append(
                     String.format(
                             """
+                            import jakarta.persistence.Column;
+                            import jakarta.persistence.Entity;
+                            import jakarta.persistence.GeneratedValue;
+                            import jakarta.persistence.GenerationType;
+                            import jakarta.persistence.Id;
+                            import jakarta.persistence.Table;
+                            import lombok.Getter;
+                            import lombok.Setter;
+                            
                             @Getter
                             @Setter
                             @Table(name = "%s")
@@ -61,7 +70,10 @@ public class CodeGenerator {
             entity.append("}");
 
             var repository = String.format(
-                    "public interface %sRepository extends JpaRepository<%s, %s> {}",
+                    """
+                    import org.springframework.data.jpa.repository.JpaRepository;
+                    
+                    public interface %sRepository extends JpaRepository<%s, %s> {}""",
                     entityName, entityName, entityIdType
             );
 

@@ -1,4 +1,4 @@
-package com.upsxace.aces_springboot_code_gen.parser;
+package com.upsxace.aces_springboot_code_gen.parser.code_generator;
 
 import lombok.Data;
 

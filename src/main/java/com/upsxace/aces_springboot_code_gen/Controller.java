@@ -1,6 +1,6 @@
 package com.upsxace.aces_springboot_code_gen;
 
-import com.upsxace.aces_springboot_code_gen.parser.GeneratedCodeDto;
+import com.upsxace.aces_springboot_code_gen.parser.code_generator.GeneratedCodeDto;
 import com.upsxace.aces_springboot_code_gen.parser.ParserService;
 import com.upsxace.aces_springboot_code_gen.parser.SqlToCodeRequest;
 import jakarta.validation.Valid;
