@@ -17,6 +17,7 @@ public enum ColumnType {
     INTEGER,
     MONEY,
     NUMERIC,
+    DECIMAL,
     REAL,
     SMALLINT,
     SMALLSERIAL,
@@ -44,6 +45,7 @@ public enum ColumnType {
             case "INTEGER", "INT", "INT4" -> ColumnType.INTEGER;
             case "MONEY" -> ColumnType.MONEY;
             case "NUMERIC" -> ColumnType.NUMERIC;
+            case "DECIMAL" -> ColumnType.DECIMAL;
             case "REAL", "FLOAT4" -> ColumnType.REAL;
             case "SMALLINT", "INT2" -> ColumnType.SMALLINT;
             case "SMALLSERIAL", "SERIAL2" -> ColumnType.SMALLSERIAL;
@@ -64,7 +66,7 @@ public enum ColumnType {
             case "SMALLINT", "SMALLSERIAL" -> "Short";
             case "INTEGER", "SERIAL" -> "Integer";
             case "DOUBLE", "REAL" -> "Double";
-            case "NUMERIC", "MONEY" -> "BigDecimal";
+            case "NUMERIC", "MONEY", "DECIMAL" -> "BigDecimal";
             case "BIT", "VARBIT", "BOOL" -> "Boolean";
             case "CHAR", "VARCHAR", "TEXT" -> "String";
             case "DATE" -> "LocalDate";

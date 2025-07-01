@@ -6,4 +6,8 @@ public class InvalidStatementException extends BadRequestException {
     public InvalidStatementException() {
         super("Invalid sql statement");
     }
+
+    public InvalidStatementException(String message) {
+        super(message);
+    }
 }

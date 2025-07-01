@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ColumnNode {
-    private final String columnName;
-    private final ColumnType columnType;
+    private String columnName;
+    private ColumnType columnType;
 }

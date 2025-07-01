@@ -1,6 +1,8 @@
 package com.upsxace.aces_springboot_code_gen.lib.utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Class with few custom utilities to handle strings
@@ -55,6 +57,11 @@ public class StringUtils {
                 .reduce("", String::concat);
     }
 
+    /**
+     * Returns the given string in camel case.
+     * @param input string to process
+     * @return string in camel case
+     */
     public static String toCamelCase(String input) {
         String[] words = extractWords(input);
 
@@ -68,5 +75,39 @@ public class StringUtils {
                 .filter(word -> !word.isEmpty())
                 .map(word -> word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase())
                 .reduce(firstWord, String::concat);
+    }
+
+    /**
+     * Splits string by commas, but ignore commas nested into parentheses
+     * @param input string to split
+     * @return list of after the split
+     */
+    public static List<String> splitIgnoringParentheses(String input) {
+        var result = new ArrayList<String>();
+        StringBuilder current = new StringBuilder();
+        var parenthesesLevel = 0;
+
+        for (char c : input.toCharArray()) {
+            if (c == ',' && parenthesesLevel == 0) {
+                // Comma outside parentheses, split
+                result.add(current.toString().trim());
+                current.setLength(0); // Clear current buffer
+            } else {
+                // Track parentheses level
+                if (c == '(') {
+                    parenthesesLevel++;
+                } else if (c == ')') {
+                    if (parenthesesLevel > 0) parenthesesLevel--;
+                }
+                current.append(c);
+            }
+        }
+
+        // Add the last segment
+        if (!current.isEmpty()) {
+            result.add(current.toString().trim());
+        }
+
+        return result;
     }
 }
