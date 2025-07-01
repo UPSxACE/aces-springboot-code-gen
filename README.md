@@ -3,24 +3,26 @@
 [![version](https://img.shields.io/github/v/tag/upsxace/aces-springboot-code-gen?label=version)](https://github.com/upsxace/aces-springboot-code-gen/releases)
 
 
-A lightweight REST API that converts SQL statements into Spring Boot `@Entity` classes and Repository interfaces.
+A lightweight REST API that converts Postgres SQL statements into Spring Boot `@Entity` classes and Repository interfaces.
 
 > 🏗️ Designed to accelerate backend development by generating JPA entities and repositories directly from your database schema.
 
 ## 🚀 Features
 
-- 🏛️ Parses SQL `CREATE TABLE` and `ALTER TABLE` statements
+- 🏛️ Parses Postgres SQL `CREATE TABLE` and `ALTER TABLE` statements
 - 🔍 Detects:
   - Table names
   - Column names and types
-  - Primary keys
-  - Foreign keys (relationships)
 - 🔧 Ignores unrelated SQL statements
 - ⚙️ Generates:
   - Java Spring Boot `@Entity` classes
   - Repository interfaces (`JpaRepository`)
 - 📦 Returns generated code as JSON response
-
+<!--
+  Detects:
+  - Primary keys
+  - Foreign keys (relationships)
+-->
 ## 🗺️ Project Architecture
 UML diagrams and detailed design documentation are available in the /docs folder.
 - [Documentation](./docs)
@@ -56,10 +58,14 @@ UML diagrams and detailed design documentation are available in the /docs folder
 ## 🛠️ Installation & Usage
 
 ### 🔥 Run with Jar
-[work in progress]
+Download the latest version in [releases](https://github.com/UPSxACE/aces-springboot-code-gen/releases)
+```bash
+# Run in production mode
+SPRING_PROFILES_ACTIVE=prod java -jar ./aces-springboot-code-gen.jar --server.port=8080
 
-### 🐳 Run with Docker
-[work in progress]
+# Run in development mode (with access to swagger-ui)
+ PRING_PROFILES_ACTIVE=dev java -jar ./aces-springboot-code-gen.jar --server.port=8080
+```
 
 ## 🌐 Access the API
 Once running, the API will be available at:
@@ -95,11 +101,9 @@ http://localhost:8080/swagger-ui/index.html
 - Java 24
 - Spring Boot
 - Maven
-- Docker
 
 ## 🔭 Roadmap
 Future features planned:
-- 📥 Generate import statements
 - 🪲 Show the line/statement where parsing fails
 - 🔄 Generate DTO mappers
 - 🗺️ Return the in-memory tree as JSON snapshot

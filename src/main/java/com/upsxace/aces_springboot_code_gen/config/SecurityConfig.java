@@ -1,6 +1,8 @@
 package com.upsxace.aces_springboot_code_gen.config;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,8 +16,11 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
 @Configuration
 @EnableWebSecurity
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class SecurityConfig {
+    @Value("${SPRING_PROFILES_ACTIVE:dev}")
+    private String activeProfile;
+
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http
@@ -23,10 +28,13 @@ public class SecurityConfig {
         http.sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(c -> {
-                c.requestMatchers("/swagger-ui/**").permitAll()
-                 .requestMatchers("/swagger-ui.html").permitAll()
-                 .requestMatchers("/v3/api-docs/**").permitAll()
-                 .requestMatchers(HttpMethod.POST, "/sql-to-code").permitAll()
+                if(!activeProfile.equals("prod")){
+                    c.requestMatchers("/swagger-ui/**").permitAll()
+                     .requestMatchers("/swagger-ui.html").permitAll()
+                     .requestMatchers("/v3/api-docs/**").permitAll();
+                }
+
+                c.requestMatchers(HttpMethod.POST, "/sql-to-code").permitAll()
                  .anyRequest().authenticated();
             })
             .exceptionHandling(c -> {

@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.upsxace</groupId>
 	<artifactId>aces-springboot-code-gen</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>aces-springboot-code-gen</name>
 	<description>A lightweight REST API that converts SQL statements into Spring Boot `@Entity` classes and Repository interfaces.</description>
 	<url/>
