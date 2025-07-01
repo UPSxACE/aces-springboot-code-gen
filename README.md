@@ -1,11 +1,10 @@
 # Ace's Springboot Code Generator
-![status](https://img.shields.io/badge/status-work%20in%20progress-orange)
 [![version](https://img.shields.io/github/v/tag/upsxace/aces-springboot-code-gen?label=version)](https://github.com/upsxace/aces-springboot-code-gen/releases)
 
 
 A lightweight REST API that converts Postgres SQL statements into Spring Boot `@Entity` classes and Repository interfaces.
 
-> 🏗️ Designed to accelerate backend development by generating JPA entities and repositories directly from your database schema.
+> 🏗️ Designed to accelerate backend development by generating JPA entities and repositories from your SQL migration scripts.
 
 ## 🚀 Features
 
