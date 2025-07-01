@@ -12,8 +12,7 @@ public class TableRelationshipGraph {
 
     public static TableRelationshipGraph fromSql(SqlToCodeRequest request){
         var graph = new TableRelationshipGraph();
-        var parser = new SqlParser(request.getSql());
-        graph.tableNodes = parser.parse();
+        graph.tableNodes = SqlParser.parse(request.getSql());
         return graph;
     }
 }

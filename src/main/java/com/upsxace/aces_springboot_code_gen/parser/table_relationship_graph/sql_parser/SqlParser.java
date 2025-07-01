@@ -9,13 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SqlParser {
-    private final List<String> rawStatements;
-
-    public SqlParser(String sqlText){
-        this.rawStatements = splitSqlStatements(sqlText);
-    }
-
-    private List<String> splitSqlStatements(String sqlText) {
+    private static List<String> splitSqlStatements(String sqlText) {
         // FIXME: strip away comments first!
 
         List<String> statements = new ArrayList<>();
@@ -43,7 +37,7 @@ public class SqlParser {
         return statements;
     }
 
-    public List<TableNode> parse(){
-        return SqlStatementParser.parseStatements(rawStatements);
+    public static List<TableNode> parse(String sqlText){
+        return SqlStatementParser.parseStatements(splitSqlStatements(sqlText));
     }
 }
