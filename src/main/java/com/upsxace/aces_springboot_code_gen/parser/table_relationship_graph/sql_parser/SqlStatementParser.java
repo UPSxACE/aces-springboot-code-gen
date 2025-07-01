@@ -8,7 +8,6 @@ import com.upsxace.aces_springboot_code_gen.parser.table_relationship_graph.sql_
 import com.upsxace.aces_springboot_code_gen.parser.table_relationship_graph.sql_parser.exceptions.InvalidStatementException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

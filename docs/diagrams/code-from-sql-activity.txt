@@ -1,0 +1,30 @@
+@startuml
+!theme toy
+title Generate code from SQL
+
+start
+:Read SQL from request body;
+:Strip SQL comments;
+:Split SQL into individual statements;
+:Parse SQL;
+if (Valid SQL) then (yes)
+  :Generate table relationship graph;
+  repeat
+    :Select table node;
+    repeat
+      :Select column node;
+      :Generate column code for entity;
+    repeat while(There are more columns in table) is (Yes)
+    :Assemble entity class code;
+    :Generate repository interface code;
+  repeat while(There are more tables in graph) is (Yes)
+  :Respond with generated code;
+else (no)
+  :Respond with parsing error;
+  stop
+endif
+
+stop
+
+
+@enduml
