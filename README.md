@@ -64,7 +64,7 @@ Download the latest version in [releases](https://github.com/UPSxACE/aces-spring
 SPRING_PROFILES_ACTIVE=prod java -jar ./aces-springboot-code-gen.jar --server.port=8080
 
 # Run in development mode (with access to swagger-ui)
- PRING_PROFILES_ACTIVE=dev java -jar ./aces-springboot-code-gen.jar --server.port=8080
+SPRING_PROFILES_ACTIVE=dev java -jar ./aces-springboot-code-gen.jar --server.port=8080
 ```
 
 ## 🌐 Access the API
