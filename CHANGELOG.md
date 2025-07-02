@@ -7,10 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [v1.0.0] - 2025-07-01
-### Added
-- Implemented `/sql-to-code` route that converts SQL migration scripts into Java Spring Boot entity and repository classes.
-- Generate necessary import statements along with the Java code.
+## [v1.0.2] - 2025-07-02
+### Changed
+- Improved parsing of column definitions.
 
 ---
 
@@ -20,8 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [v1.0.2] - 2025-07-02
-### Changed
-- Improved parsing of column definitions.
-
----
+## [v1.0.0] - 2025-07-01
+### Added
+- Implemented `/sql-to-code` route that converts SQL migration scripts into Java Spring Boot entity and repository classes.
+- Generate necessary import statements along with the Java code.
