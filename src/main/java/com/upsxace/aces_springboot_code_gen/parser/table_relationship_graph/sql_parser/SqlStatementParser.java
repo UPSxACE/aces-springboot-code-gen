@@ -88,6 +88,19 @@ public class SqlStatementParser {
     private static List<ColumnNode> parseColumnDefinitions(String columnDefinitions){
         return StringUtils.splitIgnoringParentheses(columnDefinitions)
                 .stream()
+                .filter(columnText -> {
+                    if(columnText.toLowerCase().startsWith("constraint"))
+                        return false;
+                    if(columnText.toLowerCase().startsWith("primary"))
+                        return false;
+                    if(columnText.toLowerCase().startsWith("foreign"))
+                        return false;
+                    if(columnText.toLowerCase().startsWith("unique"))
+                        return false;
+                    if(columnText.toLowerCase().startsWith("check"))
+                        return false;
+                    return !columnText.toLowerCase().startsWith("exclude");
+                })
                 .map(columnText -> parseColumnDefinition(columnText.trim()))
                 .collect(Collectors.toList());
     }
